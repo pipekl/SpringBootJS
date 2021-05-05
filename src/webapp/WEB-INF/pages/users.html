@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>User Manager</title>
+</head>
+<body>
+<div th:align="right">
+    Your login is: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+<br>
+<div th:align="center">
+    <h2>All Users</h2>
+    <br>
+    <form>
+        <button formaction="newUser">
+            Add New User
+        </button>
+    </form>
+    <br>
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="users : ${users}">
+            <tr>
+                <td th:text="${users.login}"></td>
+                <td th:text="${users.password}"></td>
+                <td th:text="${users.email}"></td>
+                <td th:text="${users.roles}"></td>
+                <td>
+                    <a th:href="@{edit(id=${users.id})}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{delete(id=${users.id})}">Delete</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
