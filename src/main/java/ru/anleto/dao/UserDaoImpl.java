@@ -47,6 +47,12 @@ public class UserDaoImpl implements UserDao {
         return query.getSingleResult();
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Role> getAllRoles() {
+        return entityManager.createQuery("from Role", Role.class).getResultList();
+    }
+
     @Override
     public Role getRoleByName(String name) {
         TypedQuery<Role> query = entityManager.createQuery("select u from Role u where u.name = :name", Role.class);

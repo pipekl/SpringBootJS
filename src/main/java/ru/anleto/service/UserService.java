@@ -20,5 +20,7 @@ public interface UserService {
 
     Role getRoleByName(String name);
 
+    List<Role> getAllRoles();
+
     void addRole(Role role);
 }
