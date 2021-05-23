@@ -4,7 +4,6 @@ import ru.anleto.model.Role;
 import ru.anleto.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -12,7 +11,7 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    void updateUser(User user);
+    User updateUser(User user);
 
     void deleteUser(Long id);
 

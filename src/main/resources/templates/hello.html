@@ -3,6 +3,7 @@
       xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
+    <link rel="icon" href="data:;base64,=">
     <meta charset="UTF-8">
     <title>All Users</title>
     <style>
@@ -73,19 +74,17 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Login</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>Role</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:object="${user}">
-                                <td th:text="${user.id}"></td>
-                                <td th:text="${user.login}"></td>
-                                <td th:text="${user.email}"></td>
-                                <td th:text="${user.password}"></td>
-                                <td th:text="${user.getRoles()}"></td>
+                            <tr>
+                                <th><span sec:authentication="principal.id"></span></th>
+                                <th><span sec:authentication="principal.login"></span></th>
+                                <th><span sec:authentication="principal.email"></span></th>
+                                <th><span sec:authentication="principal.authorities"></span></th>
                             </tr>
                             </tbody>
                         </table>
